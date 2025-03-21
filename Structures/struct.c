@@ -1,42 +1,45 @@
 #include <stdio.h>
 
+// Definição da estrutura Carta para representar cartas de baralho
 struct Carta
 {
-  // 0==paus 1=espada 2=ouro 3=copas
-  int shape;
+  // 0 == Paus, 1 == Espadas, 2 == Ouros, 3 == Copas
+  int naipe;
 
-  // a='1' 2='2' 3='3' ... j='11' q='12' k='13'
-  int face;
+  // Valores: 1 = Ás, 2-10 = Números, 11 = Valete (J), 12 = Dama (Q), 13 = Rei (K)
+  int valor;
 
-  // 0=vermelho 1=preto
-  int color;
-}
+  // 0 = Vermelho (para Ouros/Copas), 1 = Preto (para Paus/Espadas)
+  int cor;
+}; 
 
-main()
+int main()
 {
+  // Criação de carta manualmente
   struct Carta c1;
 
-  // Criando um as de espadas carta preta
-  c1.shape = 1;
-  c1.face = 1;
-  c1.color = 1;
+  // Atribuição individual dos valores (Ás de Espadas - carta preta)
+  c1.naipe = 1;   // Espadas
+  c1.valor = 1;    // Ás
+  c1.cor = 1;      // Preto
 
-  // Posso tambem inicializar a estrutura diretamente atribuindo os valores desejados
-  // Exemplo: 2 de ouros carta verrmelha
-  struct Carta c2 = {2, 2, 0};
+  // Inicialização direta na declaração (2 de Ouros - carta vermelha)
+  struct Carta c2 = {2, 2, 0}; // {naipe, valor, cor}
 
-  // Criando um baralho. Exemplo de array do tipo Carta
-  // Exemplo de um baralho com 3 cartas para fins de teste
-  struct Carta baralho[3] =
+  // Criação de um "baralho" usando array de structs
+  // Array fixo com 3 cartas pré-definidas para teste
+  struct Carta baralho[3] = 
   {
-    {1,1,1},
-    {2,4,0},
-    {3,12,1} 
+    {1, 1, 1},   // Ás de Espadas (preto)
+    {2, 4, 0},    // 4 de Ouros (vermelho)
+    {3, 12, 1}    // Dama (Q) de Copas (preto)
   };
 
-  // Imprime os atributos da primeira carta {1,1,1} = as de espadas carta preta
-  printf("%d", baralho[0].face);
-  printf("%d", baralho[0].shape);
-  printf("%d", baralho[0].color);
+  // Impressão dos atributos da primeira carta do baralho
+  // Resultado será "111" (valor, naipe, cor) sem formatação
+  printf("%d", baralho[0].valor);
+  printf("%d", baralho[0].naipe);
+  printf("%d", baralho[0].cor);
 
+  return 0;
 }
