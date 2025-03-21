@@ -41,5 +41,7 @@ int main()
   printf("%d", baralho[0].naipe);
   printf("%d", baralho[0].cor);
 
+  printf("Tamanho em bytes da struct Carta = %d\n", sizeof(c1));
+
   return 0;
 }
