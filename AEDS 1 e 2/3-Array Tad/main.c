@@ -6,10 +6,16 @@ int main()
 {
 
     array_t arr = new_array(10);
+    array_t arr2 = new_array(10);
 
     for (int i = 0; i < 5; i++)
     {
         append(&arr, i);
+    }
+
+    for (int i = 5; i >= 0; i--)
+    {
+        append(&arr2, i);
     }
 
     print_array(&arr);
@@ -21,8 +27,19 @@ int main()
     print_array(&arr);
 
     bool num_found = linear_search(&arr, 100);
-    if(num_found) printf("Number %d was found\n", 100);
-    else printf("Number %d was not found\n", 100);
+    if (num_found)
+        printf("Number %d was found\n", 100);
+    else
+        printf("Number %d was not found\n", 100);
+
+
+    print_array(&arr2);
+    bool num_found2 = binary_search(&arr2, 100);
+    if (num_found2)
+        printf("Number %d was found\n", 100);
+    else
+        printf("Number %d was not found\n", 100);
+
 
     delete_array(&arr);
     return 0;

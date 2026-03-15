@@ -70,8 +70,10 @@ void resize(array_t *arr)
     }
 }
 
-void delete_array(array_t *arr){
-    if(arr != NULL){
+void delete_array(array_t *arr)
+{
+    if (arr != NULL)
+    {
         free(arr->A);
         arr->A = NULL;
     }
@@ -97,9 +99,62 @@ void print_array(array_t *arr)
     printf("\n");
 }
 
-bool linear_search(array_t *arr, int target){
-    for(int i=0;i<arr->length;i++){
-        if(arr->A[i] == target) return true;
+bool linear_search(array_t *arr, int target)
+{
+    for (int i = 0; i < arr->length; i++)
+    {
+        if (arr->A[i] == target)
+            return true;
     }
     return false;
+}
+
+bool binary_search(array_t *arr, int target)
+{
+    if (arr->length == 0)
+        return false;
+    bool isSorted = is_sorted(arr);
+    if (isSorted)
+    {
+        int low = 0;
+        int high = arr->length - 1;
+        while (low <= high)
+        {
+            int curr = (low + high) / 2;
+            if (arr->A[curr] == target)
+                return true;
+            else if (target > arr->A[curr])
+                low = curr + 1;
+            else
+                high = curr - 1;
+        }
+        return false;
+    }
+    else
+    {
+        printf("[Error]: Array nao ordenado\n");
+        return false;
+    }
+    return false;
+}
+
+bool search(array_t *arr, int target)
+{
+    bool isSorted = is_sorted(arr);
+    if (isSorted)
+        return binary_search(arr, target);
+    else
+        return linear_search(arr, target);
+}
+
+bool is_sorted(array_t *arr)
+{
+    if (arr->length < 2)
+        return true;
+    for (int i = 0; i < arr->length - 1; i++)
+    {
+        if (arr->A[i] > arr->A[i + 1])
+            return false;
+    }
+    return true;
 }

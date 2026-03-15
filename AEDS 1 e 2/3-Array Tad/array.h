@@ -16,3 +16,5 @@ void remove_at(array_t *arr, int index);
 void delete_array(array_t *arr);
 void resize(array_t *arr);
 bool linear_search(array_t *arr, int target);
+bool binary_search(array_t *arr, int target);
+bool is_sorted(array_t *arr);
