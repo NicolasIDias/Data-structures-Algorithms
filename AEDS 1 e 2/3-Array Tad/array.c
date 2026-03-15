@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "array.h"
+#include "../shared/bool.h"
 
 array_t new_array(int size)
 {
@@ -94,4 +95,11 @@ void print_array(array_t *arr)
     }
     printf("]");
     printf("\n");
+}
+
+bool linear_search(array_t *arr, int target){
+    for(int i=0;i<arr->length;i++){
+        if(arr->A[i] == target) return true;
+    }
+    return false;
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "../shared/bool.h"
 
 typedef struct Array
 {
@@ -14,3 +15,4 @@ void insert_at(array_t *arr, int n, int index);
 void remove_at(array_t *arr, int index);
 void delete_array(array_t *arr);
 void resize(array_t *arr);
+bool linear_search(array_t *arr, int target);
