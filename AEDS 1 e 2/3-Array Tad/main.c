@@ -19,7 +19,6 @@ int main()
     remove_at(&arr, 9);
     print_array(&arr);
 
-
     delete_array(&arr);
     return 0;
 }

@@ -1,6 +1,7 @@
 #pragma once
 
-typedef struct Array {
+typedef struct Array
+{
     int *A;
     int size;
     int length;
