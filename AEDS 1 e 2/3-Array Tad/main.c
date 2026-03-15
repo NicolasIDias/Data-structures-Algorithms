@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "array.h"
+#include "../shared/bool.h"
 
 int main()
 {
