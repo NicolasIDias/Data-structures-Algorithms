@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "array.h"
-#include "../shared/bool.h"
+#include "../0-shared/bool.h"
 
 int main()
 {
@@ -32,7 +32,6 @@ int main()
     else
         printf("Number %d was not found\n", 100);
 
-
     print_array(&arr2);
     bool num_found2 = binary_search(&arr2, 100);
     if (num_found2)
@@ -40,6 +39,9 @@ int main()
     else
         printf("Number %d was not found\n", 100);
 
+    printf("%d\n", min(&arr));
+    printf("%d\n", max(&arr));
+    printf("%.2f\n", avg(&arr));
 
     delete_array(&arr);
     return 0;

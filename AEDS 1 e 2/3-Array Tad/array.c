@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "array.h"
-#include "../shared/bool.h"
+#include "../0-shared/bool.h"
 
 array_t new_array(int size)
 {
@@ -157,4 +157,49 @@ bool is_sorted(array_t *arr)
             return false;
     }
     return true;
+}
+
+int max(array_t *arr)
+{
+    if (arr == NULL)
+    {
+        printf("[Error]: Array Nulo");
+        return -1;
+    }
+    else{
+        int max = arr->A[0];
+        for(int i=0;i<arr->length;i++){
+            if(max < arr->A[i]) max = arr->A[i];
+        }          
+        return max;
+    }
+}
+
+
+int min(array_t *arr)
+{
+    if (arr == NULL)
+    {
+        printf("[Error]: Array Nulo");
+        return -1;
+    }
+    else{
+        int min = arr->A[0];
+        for(int i=0;i<arr->length;i++){
+            if(min > arr->A[i]) min = arr->A[i];
+        }          
+        return min;
+    }
+}
+
+float avg(array_t *arr){
+    if(arr == NULL){
+        printf("[Error]: Array Nulo");
+        return -1;
+    }
+    else{
+        int sum = 0;
+        for(int i=0;i<arr->length;i++) sum += arr->A[i];
+        return sum/arr->length;
+    }
 }

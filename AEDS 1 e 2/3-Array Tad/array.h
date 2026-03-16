@@ -1,5 +1,5 @@
 #pragma once
-#include "../shared/bool.h"
+#include "../0-shared/bool.h"
 
 typedef struct Array
 {
@@ -18,3 +18,6 @@ void resize(array_t *arr);
 bool linear_search(array_t *arr, int target);
 bool binary_search(array_t *arr, int target);
 bool is_sorted(array_t *arr);
+int max(array_t *arr);
+int min(array_t *arr);
+float avg(array_t *arr);
