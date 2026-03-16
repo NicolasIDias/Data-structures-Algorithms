@@ -7,10 +7,12 @@ int main(){
 
 
     for(int i=0;i<6;i++){
-        fila1.A[i] = i;
-        fila1.length++;
+        enqueue(&fila1, i);
     }
 
+    int n = dequeue(&fila1);
+
+    printf("%d\n", n);
     print_queue(&fila1);
 
     delete_queue(&fila1);
