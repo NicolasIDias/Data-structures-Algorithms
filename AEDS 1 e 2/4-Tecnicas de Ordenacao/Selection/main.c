@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "../utils/array.h"
 #include "selection.h"
 
