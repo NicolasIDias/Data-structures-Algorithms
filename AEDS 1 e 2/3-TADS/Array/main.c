@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "array.h"
-#include "../0-shared/bool.h"
+#include "../../0-shared/bool.h"
 
 int main()
 {
@@ -43,6 +43,30 @@ int main()
     printf("%d\n", max(&arr));
     printf("%.2f\n", avg(&arr));
 
+    array_t merge1 = new_array(10);
+    array_t merge2 = new_array(10);
+
+    for (int i = 0; i < 5; i++)
+    {
+        append(&merge1, i);
+    }
+
+    for (int i = 5; i >= 0; i--)
+    {
+        append(&merge2, i);
+    }
+
+    //print_array(&merge1);
+    //print_array(&merge2);
+
+    array_t merged12 = merge(&merge1, &merge2);
+    print_array(&merged12);
+
+
+    delete_array(&merged12);
+    delete_array(&merge1);
+    delete_array(&merge2);
     delete_array(&arr);
+    delete_array(&arr2);
     return 0;
 }

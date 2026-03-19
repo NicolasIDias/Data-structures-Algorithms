@@ -1,5 +1,5 @@
 #pragma once
-#include "../0-shared/bool.h"
+#include "../../0-shared/bool.h"
 
 typedef struct Array
 {
@@ -21,3 +21,4 @@ bool is_sorted(array_t *arr);
 int max(array_t *arr);
 int min(array_t *arr);
 float avg(array_t *arr);
+array_t merge(array_t *arr1, array_t *arr2);

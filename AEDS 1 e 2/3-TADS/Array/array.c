@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "array.h"
-#include "../0-shared/bool.h"
+#include "../../0-shared/bool.h"
 
 array_t new_array(int size)
 {
@@ -166,15 +166,17 @@ int max(array_t *arr)
         printf("[Error]: Array Nulo");
         return -1;
     }
-    else{
+    else
+    {
         int max = arr->A[0];
-        for(int i=0;i<arr->length;i++){
-            if(max < arr->A[i]) max = arr->A[i];
-        }          
+        for (int i = 0; i < arr->length; i++)
+        {
+            if (max < arr->A[i])
+                max = arr->A[i];
+        }
         return max;
     }
 }
-
 
 int min(array_t *arr)
 {
@@ -183,23 +185,65 @@ int min(array_t *arr)
         printf("[Error]: Array Nulo");
         return -1;
     }
-    else{
+    else
+    {
         int min = arr->A[0];
-        for(int i=0;i<arr->length;i++){
-            if(min > arr->A[i]) min = arr->A[i];
-        }          
+        for (int i = 0; i < arr->length; i++)
+        {
+            if (min > arr->A[i])
+                min = arr->A[i];
+        }
         return min;
     }
 }
 
-float avg(array_t *arr){
-    if(arr == NULL){
+float avg(array_t *arr)
+{
+    if (arr == NULL)
+    {
         printf("[Error]: Array Nulo");
         return -1;
     }
-    else{
+    else
+    {
         int sum = 0;
-        for(int i=0;i<arr->length;i++) sum += arr->A[i];
-        return sum/arr->length;
+        for (int i = 0; i < arr->length; i++)
+            sum += arr->A[i];
+        return sum / arr->length;
     }
+}
+
+array_t merge(array_t *arr1, array_t *arr2)
+{
+    int size = arr1->size + arr2->size;
+    array_t arr = new_array(size);
+
+    print_array(arr1);
+    print_array(arr2);
+
+    int i = 0, j = 0;
+
+    while (i < arr1->length && j < arr2->length)
+    {
+        if (arr1->A[i] < arr2->A[j])
+        {
+            append(&arr, arr1->A[i]);
+            i++;
+        }
+        else
+        {
+            append(&arr, arr2->A[j]);
+            j++;
+        }
+    }
+    for (; i < arr1->length; i++)
+    {
+        append(&arr, arr1->A[i]);
+    }
+    for (; j < arr2->length; j++)
+    {
+        append(&arr, arr2->A[j]);
+    }
+
+    return arr;
 }
