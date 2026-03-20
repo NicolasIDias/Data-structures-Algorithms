@@ -1,6 +1,7 @@
 #include <string.h>
 
-typedef struct {
+typedef struct
+{
   size_t length;
   char buffer[64];
 } TextBuffer;

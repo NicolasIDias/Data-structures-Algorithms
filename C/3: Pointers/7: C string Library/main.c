@@ -5,40 +5,44 @@
 #define RUN
 #define SUBMIT
 
-#define munit_case(case_name, test_name, block) \
-  static MunitResult test_name(const MunitParameter params[], void* user_data_or_fixture) { \
-    (void) params; \
-    (void) user_data_or_fixture; \
-    block \
-    return MUNIT_OK; \
+#define munit_case(case_name, test_name, block)                                           \
+  static MunitResult test_name(const MunitParameter params[], void *user_data_or_fixture) \
+  {                                                                                       \
+    (void)params;                                                                         \
+    (void)user_data_or_fixture;                                                           \
+    block return MUNIT_OK;                                                                \
   }
 
 #undef munit_assert_int
-#define munit_assert_int(a, op, b, msg) \
-  do { \
-    int munit_tmp_a_ = (a); \
-    int munit_tmp_b_ = (b); \
-    if (MUNIT_UNLIKELY(!(munit_tmp_a_ op munit_tmp_b_))) { \
+#define munit_assert_int(a, op, b, msg)                                                      \
+  do                                                                                         \
+  {                                                                                          \
+    int munit_tmp_a_ = (a);                                                                  \
+    int munit_tmp_b_ = (b);                                                                  \
+    if (MUNIT_UNLIKELY(!(munit_tmp_a_ op munit_tmp_b_)))                                     \
+    {                                                                                        \
       munit_errorf("Assertion failed: %s (%d %s %d)", msg, munit_tmp_a_, #op, munit_tmp_b_); \
-    } \
+    }                                                                                        \
   } while (0)
 
 #undef munit_assert_string_equal
-#define munit_assert_string_equal(a, b, msg) \
-  do { \
-    if (MUNIT_UNLIKELY(strcmp((a), (b)) != 0)) { \
+#define munit_assert_string_equal(a, b, msg)                                  \
+  do                                                                          \
+  {                                                                           \
+    if (MUNIT_UNLIKELY(strcmp((a), (b)) != 0))                                \
+    {                                                                         \
       munit_errorf("Assertion failed: %s (\"%s\" != \"%s\")", msg, (a), (b)); \
-    } \
+    }                                                                         \
   } while (0)
 
 #define munit_test(name, func) \
-  { (char*) name, func, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
+  {(char *)name, func, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL}
 
 #define munit_null_test \
-   { NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
+  {NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL}
 
 #define munit_suite(name, tests) \
-   { (char*) name, tests, NULL, 1, MUNIT_SUITE_OPTION_NONE }
+  {(char *)name, tests, NULL, 1, MUNIT_SUITE_OPTION_NONE}
 
 munit_case(RUN, test_return_1_for_null_value, {
   TextBuffer dest;
@@ -90,7 +94,8 @@ munit_case(SUBMIT, test_smart_append_overflow, {
                    "Length should be 63 after overflow append");
 });
 
-int main() {
+int main()
+{
   MunitTest tests[] = {
       munit_test("/test_return_1_for_null_value", test_return_1_for_null_value),
       munit_test("/test_smart_append_empty_buffer",
